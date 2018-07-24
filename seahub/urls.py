@@ -60,6 +60,7 @@ from seahub.api2.endpoints.user import User
 # Admin
 from seahub.api2.endpoints.admin.revision_tag import AdminTaggedItemsView
 from seahub.api2.endpoints.admin.login_logs import LoginLogs, AdminLoginLogs
+from seahub.api2.endpoints.admin.file import AdminFileDetail
 from seahub.api2.endpoints.admin.file_audit import FileAudit
 from seahub.api2.endpoints.admin.file_update import FileUpdate
 from seahub.api2.endpoints.admin.perm_audit import PermAudit
@@ -328,6 +329,9 @@ urlpatterns = patterns(
     ## admin::trash-libraries
     url(r'^api/v2.1/admin/trash-libraries/$', AdminTrashLibraries.as_view(), name='api-v2.1-admin-trash-libraries'),
     url(r'^api/v2.1/admin/trash-libraries/(?P<repo_id>[-0-9a-f]{36})/$', AdminTrashLibrary.as_view(), name='api-v2.1-admin-trash-library'),
+
+    ## admin::file
+    url(r'^api/v2.1/admin/(?P<repo_id>[-0-9-a-f]{36})/file/detail/$', AdminFileDetail.as_view(), name='api-v2.1-admin-file-detail'),
 
     ## admin::groups
     url(r'^api/v2.1/admin/groups/$', AdminGroups.as_view(), name='api-v2.1-admin-groups'),
